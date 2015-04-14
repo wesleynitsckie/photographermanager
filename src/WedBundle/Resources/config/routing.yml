@@ -1,0 +1,19 @@
+_dashboard:
+    resource: "@WedBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:     /
+
+_calendar:
+    resource: "@WedBundle/Controller/CalendarController.php"
+    type:     annotation
+    prefix:   /calendar
+
+_billing:
+    resource: "@WedBundle/Controller/BillingController.php"
+    type:     annotation
+    prefix:  /billing
+
+_shoots:
+    resource: "@WedBundle/Controller/ShootsController.php"
+    type:     annotation
+    prefix:  /shoots

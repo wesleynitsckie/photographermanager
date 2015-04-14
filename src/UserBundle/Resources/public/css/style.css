@@ -1,0 +1,86 @@
+
+@media screen and (max-width: 800px) {
+
+    .loginlogo{
+        height: 289px;
+    }
+
+    .login-card input[type="text"] , .login-card input[type="password"] {
+        font-size: 18px;
+        height: 60px;
+        margin-bottom:20px;
+    }
+}
+
+
+@media screen
+and (min-width: 800px)
+and (max-width: 1024px) {
+    .loginlogo{
+        height: 350px;
+    }
+
+    .login-card input[type="text"] , .login-card input[type="password"] {
+        font-size: 22px;
+        height: 60px;
+        margin-bottom:20px;
+    }
+}
+
+@media screen
+and (min-width: 1024px){
+    .loginlogo{
+        height: 350px;
+    }
+
+    .login-card input[type="text"] , .login-card input[type="password"] {
+        font-size: 22px;
+        height: 60px;
+        margin-bottom:20px;
+    }
+}
+
+.login-card {
+    text-align: center;
+    padding: 30px 50px;
+
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: 1px solid #d3d3d3;
+
+}
+
+.login-card h2{
+    margin:20px 0px;
+}
+
+.loginlogo{
+    width: 100%;
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.login-center{
+    text-align: center;
+}
+
+.login-center a{
+    color:#9a9a9a;
+}
+
+/**********************************/
+.checkbox label{
+    padding-left:0px;
+}
+
+
+/*****************************
+*   BOOTSTRAP Overrides
+*****************************/
+.btn-primary{
+    background-color: #5889b5;
+    border-color: #5889b5;
+}
+
+
