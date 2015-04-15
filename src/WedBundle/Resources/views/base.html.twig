@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     {% set user = app.security.getToken().getUser() %}
 {% include 'WedBundle::head.html.twig' %}
     {% block css %}{% endblock %}
+
 </head>
 <body>
 <body class="skin-blue">

@@ -1,0 +1,18 @@
+{% extends 'WedBundle::base.html.twig' %}
+
+{% block pageHeading %}Clients{% endblock %}
+{% block subheading %}Create a new Client{% endblock %}
+
+{% block content -%} <!-- Main content -->
+    <h1>Type creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('types') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

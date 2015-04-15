@@ -28,8 +28,8 @@
                     <i class="fa fa-th"></i> <span>Shoots</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ path('_shoots') }}"><i class="fa fa-group"></i>Bookings</a></li>
-                    <li><a href="{{ path('_clients') }}"><i class="fa fa-group"></i>Clients</a></li>
+                    <li><a href="{{ path('bookings') }}"><i class="fa fa-group"></i>Bookings</a></li>
+                    <li><a href="{{ path('clients') }}"><i class="fa fa-group"></i>Clients</a></li>
                     <li><a href="pages/tables/data.html"><i class="fa fa-picture-o"></i>Photos</a></li>
                 </ul>
             </li>
@@ -52,8 +52,9 @@
             <li><a href="#"><i class="fa fa-book"></i> Help</a></li>
             <li class="header"><i class="fa fa-cog"></i> Configure</li>
             <li><a href="#"><i class="fa fa-shopping-cart"></i> Business Details</a></li>
-            <li><a href="#"><i class="fa fa-shopping-cart"></i> Packages</a></li>
+            <li><a href="{{ path('packages') }}"><i class="fa fa-shopping-cart"></i> Packages</a></li>
             <li><a href="#"><i class="fa fa-money"></i> Banking Details </a></li>
+            <li><a href="{{ path('types') }}"><i class="fa fa-money"></i> Shoot Types </a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

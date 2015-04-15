@@ -16,6 +16,14 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $bookings = $this->getDoctrine()
+            ->getRepository("WedBundle:Booking")
+            ->findByisComplete(false);
+        $clients = $this->getDoctrine()
+            ->getRepository("WedBundle:Client")
+            ->findAll();
+        return array('bookings' => count($bookings),
+                    'clients' => count($clients)
+            );
     }
 }

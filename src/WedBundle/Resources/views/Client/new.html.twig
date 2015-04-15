@@ -1,0 +1,32 @@
+{% extends 'WedBundle::base.html.twig' %}
+
+{% block pageHeading %}Clients{% endblock %}
+{% block subheading %}Create a new Client{% endblock %}
+
+{% block content -%} <!-- Main content -->
+
+
+    <div class="row">
+        <section class="content">
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Quick Example</h3>
+                    </div><!-- /.box-header -->
+                    {{ form(form) }}
+                </div><!-- /.box -->
+            </div>
+        </section>
+    </div>
+
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('clients') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

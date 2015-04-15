@@ -1,0 +1,54 @@
+{% extends 'WedBundle::base.html.twig' %}
+
+{% block pageHeading %}Clients{% endblock %}
+{% block subheading %}Create a new Client{% endblock %}
+
+{% block content -%} <!-- Main content -->
+    <h1>Booking list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Bookingdatetime</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Clientid</th>
+                <th>Iscomplete</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('booking_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.bookingDateTime %}{{ entity.bookingDateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.type.name }}</td>
+                <td>{{ entity.location }}</td>
+                <td>{{ entity.clientId }}</td>
+                <td>{{ entity.isComplete }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('booking_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('booking_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('booking_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

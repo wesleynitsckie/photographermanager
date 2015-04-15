@@ -17,3 +17,23 @@ _shoots:
     resource: "@WedBundle/Controller/ShootsController.php"
     type:     annotation
     prefix:  /shoots
+
+clients:
+    resource: "@WedBundle/Controller/ClientController.php"
+    type:     annotation
+    prefix:  /clients
+
+bookings:
+    resource: "@WedBundle/Controller/BookingController.php"
+    type:     annotation
+    prefix:  /bookings
+
+types:
+    resource: "@WedBundle/Controller/TypeController.php"
+    type:     annotation
+    prefix:  /types
+
+packages:
+    resource: "@WedBundle/Controller/PackageController.php"
+    type:     annotation
+    prefix:  /packages
