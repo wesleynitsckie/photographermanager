@@ -16,11 +16,14 @@ class PackageType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description')
+            ->add('description', 'textarea')
             ->add('price')
             ->add('created')
             ->add('updated')
-            ->add('typeId')
+            ->add('type','entity', array(
+                'class' => 'WedBundle:Type',
+                'property' => 'name'
+            ))
         ;
     }
     

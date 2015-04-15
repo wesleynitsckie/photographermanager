@@ -1,15 +1,31 @@
-{% extends '::base.html.twig' %}
+{% extends 'WedBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>Package creation</h1>
+{% block pageHeading %}Packages{% endblock %}
+{% block subheading %}Create a new Package{% endblock %}
+
+{% block content -%} <!-- Main content -->
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('package') }}">
+        <a href="{{ path('packages') }}">
             Back to the list
         </a>
     </li>
 </ul>
+
+
+    </script>
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+$(function () {
+    //bootstrap WYSIHTML5 - text editor
+    $(".textarea").wysihtml5();
+});
+
 {% endblock %}

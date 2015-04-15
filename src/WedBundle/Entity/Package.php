@@ -63,6 +63,23 @@ class Package
      */
     private $typeId;
 
+    /**
+     * @var object $type
+     * @ORM\ManyToOne(targetEntity="Type")
+     * @ORM\JoinColumn(name="typeId", referencedColumnName="id")
+     *
+     */
+
+    private $type;
+
+    public function setType($type){
+        $this->type = $type;
+    }
+
+    public function getType(){
+        return $this->type;
+    }
+
 
     /**
      * Get id
