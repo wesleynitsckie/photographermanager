@@ -37,3 +37,8 @@ packages:
     resource: "@WedBundle/Controller/PackageController.php"
     type:     annotation
     prefix:  /packages
+
+mailbox:
+    resource: "@WedBundle/Controller/MailboxController.php"
+    type:     annotation
+    prefix:  /mailbox
