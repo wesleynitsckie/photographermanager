@@ -1,0 +1,19 @@
+{% extends "AppBundle:layouts:base.html.twig" %}
+{% block content %}
+index page
+home page
+
+    <br>
+
+    {% if app.user %}
+        Hi {{ app.user.name }}
+        <br>
+        <a href="{{ path('_dashboard') }}">Admin</a>
+        <br>
+        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+    {% else %}
+        <a href="{{ path('fos_user_security_login') }}">Login</a>
+
+    {% endif %}
+<br>
+{% endblock %}

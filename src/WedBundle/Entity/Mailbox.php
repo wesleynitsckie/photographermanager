@@ -56,6 +56,24 @@ class Mailbox
      */
     private $parentId;
 
+    /**
+     * @var object $client
+     * @ORM\ManyToOne(targetEntity="Client", inversedBy="messages")
+     * @ORM\JoinColumn(name="clientId", referencedColumnName="id")
+     *
+     */
+    private $client;
+
+    public function setClient($client){
+        $this->client = $client;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClient(){
+        return $this->client;
+    }
 
     /**
      * Get id

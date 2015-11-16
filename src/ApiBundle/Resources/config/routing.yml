@@ -1,0 +1,4 @@
+bookings:
+    prefix: /bookings
+    type:   rest
+    resource:   ApiBundle\Controller\BookingsController

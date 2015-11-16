@@ -77,6 +77,12 @@ class Client
      */
     private $bookings;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="Mailbox", mappedBy="client")
+     */
+    private $messages;
+
     public function addBooking($booking){
         $this->bookings[] = $booking;
     }
@@ -85,8 +91,17 @@ class Client
         return $this->bookings;
     }
 
+    public function addMessage($message){
+        $this->messages[] = $message;
+    }
+
+    public function getMessages(){
+        return $this->messages;
+    }
+
     public function __construct(){
         $this->bookings = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
     /**
      * Get id
