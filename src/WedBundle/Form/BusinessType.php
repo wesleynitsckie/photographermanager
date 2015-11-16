@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ClientType extends AbstractType
+class BusinessType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,22 +15,20 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('email')
+            ->add('businessName')
             ->add('contactNumber')
-            ->add('created')
-            ->add('updated')
+            ->add('file', 'file')
+            ->add('businessEmail')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'WedBundle\Entity\Client'
+            'data_class' => 'WedBundle\Entity\User'
         ));
     }
 
@@ -39,6 +37,6 @@ class ClientType extends AbstractType
      */
     public function getName()
     {
-        return 'client';
+        return 'business';
     }
 }

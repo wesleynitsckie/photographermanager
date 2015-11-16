@@ -2,3 +2,8 @@ bookings:
     prefix: /bookings
     type:   rest
     resource:   ApiBundle\Controller\BookingsController
+
+default:
+    prefix: /
+    type:   rest
+    resource:   ApiBundle\Controller\DefaultController

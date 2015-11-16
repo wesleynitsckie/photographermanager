@@ -25,9 +25,11 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "friendsofsymfony/rest-bundle": "~1.5",
         "jms/serializer": "0.16.*",
-        "oh/google-map-form-type-bundle": "dev-master"
+        "oh/google-map-form-type-bundle": "dev-master",
+        "jms/serializer-bundle": "0.13.*",
+        "nelmio/api-doc-bundle": "2.8.0"
     },
-    "require-dev": {
+    "require-dev": {"hwi/oauth-bundle": "0.4.*@dev",
         "sensio/generator-bundle": "~2.3"
     },
     "scripts": {
