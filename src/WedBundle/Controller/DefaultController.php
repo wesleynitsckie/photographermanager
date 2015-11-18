@@ -41,7 +41,11 @@ class DefaultController extends Controller
         var_dump($form->isSubmitted());
         if ($form->isValid() && $form->isSubmitted()) {
 
-            var_dump('form submitted');die;
+            //var_dump('form submitted');die;
+            $em = $this->getDoctrine()->getManager();
+            $user->upload();
+            $em->persist($user);
+            $em->flush();
         }
         return array('form' => $form->createView());
 

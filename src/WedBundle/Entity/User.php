@@ -6,9 +6,13 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ExclusionPolicy("all")
  */
 class User extends BaseUser
 {
@@ -41,6 +45,7 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     * @Expose
      */
     protected $name;
 
@@ -51,21 +56,25 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(name="business_name", type="string", length=255, nullable=true)
+     * @Expose
      */
     protected $businessName;
 
     /**
      * @ORM\Column(name="business_url", type="string", length=255, nullable=true)
+     * @Expose
      */
     protected $businessUrl;
 
     /**
      * @ORM\Column(name="business_email", type="string", length=255, nullable=true)
+     * @Expose
      */
     protected $businessEmail;
 
     /**
      * @ORM\Column(name="contact_number", type="string", length=255, nullable=true)
+     * @Expose
      */
     protected $contactNumber;
 
@@ -74,8 +83,14 @@ class User extends BaseUser
      */
     private $file;
 
+    /**
+     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
+     * @Expose
+     */
+    protected $logo;
+
     public function setBusinessEmail($email){
-        $this->businessEmail;
+        $this->businessEmail = $email;
     }
 
     public function getBusinessEmail(){
@@ -102,11 +117,6 @@ class User extends BaseUser
         return $this->file;
     }
 
-    /**
-     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
-     */
-    protected $logo;
-
     public function getAbsolutePath()
     {
         return null === $this->logo
@@ -125,56 +135,98 @@ class User extends BaseUser
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        $path = __DIR__.'/../../../../web/'.$this->getUploadDir();
+
+        return $path;
     }
 
     protected function getUploadDir()
     {
+
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
+        return 'uploads/logos';
     }
 
-    public function uploadAction()
+    public function upload()
     {
-        // ...
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
 
-        $form = $this->createFormBuilder($document)
-            ->add('name')
-            ->add('file')
-            ->getForm();
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
 
-        // ...
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->logo = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
     }
 
+    /**
+     * Get the logo
+     * @return mixed
+     */
     public function getLogo(){
         return $this->logo;
     }
 
+    /**
+     * Set the FacBook Id
+     * @param $facebookId
+     */
     public function setFacebookId($facebookId){
         $this->facebook_id = $facebookId;
     }
 
+    /**
+     * Set the FaceBook Access Token
+     * @param $accessToken
+     */
     public function setFacebookAccessToken($accessToken){
         $this->facebook_access_token = $accessToken;
     }
 
+    /**
+     * Get te user's name
+     * @return mixed
+     */
     public function getName(){
         return $this->name;
     }
 
+    /**
+     * Set the user's name
+     * @param $name
+     */
     public function setName($name){
         $this->name = $name;
     }
 
+    /**
+     * Get the profile pic
+     * @return mixed
+     */
     public function getProfilePicture(){
         return $this->profilePicture;
     }
 
+    /**
+     * Set the profile picwesleynitscki
+     * @param $pp
+     */
     public function setProfilePicture($pp){
         $this->profilePicture = $pp;
     }
-
 
     /**
      * Set the business Name
@@ -209,6 +261,8 @@ class User extends BaseUser
     public function getBusinessUrl(){
         return $this->businessUrl;
     }
+
+
 
     /**
      * Set the contact number

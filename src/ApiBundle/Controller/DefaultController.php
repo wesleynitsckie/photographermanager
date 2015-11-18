@@ -30,7 +30,7 @@ class DefaultController extends Controller
         $entities = $em->getRepository('WedBundle:User')
                 ->createQueryBuilder('o')
                 ->where('o.businessName LIKE :bname')
-                ->setParameter('bname', $name)
+                ->setParameter('bname', "$name%")
                 ->getQuery()
                 ->getResult();
         return $entities;
