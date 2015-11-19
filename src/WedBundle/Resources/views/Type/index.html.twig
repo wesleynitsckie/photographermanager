@@ -1,11 +1,47 @@
 {% extends 'WedBundle::base.html.twig' %}
 
-{% block pageHeading %}Clients{% endblock %}
-{% block subheading %}Create a new Client{% endblock %}
+{% block pageHeading %}Shoot Types{% endblock %}
+{% block subheading %}{% endblock %}
 
 {% block content -%} <!-- Main content -->
-    <h1>Type list</h1>
+<div class="row">
+    <div class="col-xs-12 col-lg-4 col-md-6">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">A List of Shoot Types</h3>
+                <div class="box-tools">
+                    <div class="input-group">
+                        <a class="btn btn-primary" href="{{ path('type_new') }}">
+                            <i class="fa fa-plus"></i> Add a Type
+                        </a>
+                        <!--input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
 
+                        </div-->
+                    </div>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Type</th>
+                        <th></th>
+                    </tr>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.name }}</td>
+                            <td> <a class="btn" href="{{ path('type_edit', { 'id': entity.id }) }}">Edit</a></td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+
+   </div>
     <table class="records_list">
         <thead>
             <tr>

@@ -30,6 +30,11 @@ class BusinessProfile
     private $portfolioImages;
 
     /**
+     *  @ORM\OneToMany(targetEntity="Client", mappedBy="businessProfile")
+     */
+    private $clients;
+
+    /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="businessProfile")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -112,6 +117,7 @@ class BusinessProfile
 
     public function __construct() {
         $this->portfolioImages = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     /**
@@ -375,6 +381,10 @@ class BusinessProfile
      */
     public function getPorfolioImages(){
         return $this->portfolioImages;
+    }
+
+    public  function getClients(){
+        return $this->clients;
     }
 
     //======================LOGO UPLOAD SECTION=============================//

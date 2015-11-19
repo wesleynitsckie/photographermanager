@@ -51,7 +51,7 @@ class PortfolioImage
      * @param integer $businessProfile
      * @return Portfolio
      */
-    public function setBusinessProfile($businessProfile)
+    public function setBusinessProfile(BusinessProfile $businessProfile)
     {
         $this->businessProfile = $businessProfile;
 

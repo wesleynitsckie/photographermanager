@@ -19,8 +19,6 @@ class ClientType extends AbstractType
             ->add('lastname')
             ->add('email')
             ->add('contactNumber')
-            ->add('created')
-            ->add('updated')
         ;
     }
     

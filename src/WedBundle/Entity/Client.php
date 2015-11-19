@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Client
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="WedBundle\Entity\ClientRepository")
+ * @ORM\Entity
  */
 class Client
 {
@@ -39,7 +39,7 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="clientCode", type="string", length=255)
+     * @ORM\Column(name="clientCode", type="string", length=255, nullable=true)
      */
     private $clientCode;
 
@@ -60,14 +60,14 @@ class Client
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updated", type="datetime")
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
      */
     private $updated;
 
@@ -83,6 +83,28 @@ class Client
      */
     private $messages;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="BusinessProfile", inversedBy="clients")
+     * @ORM\JoinColumn(name="businessProfile_id", referencedColumnName="id")
+     */
+    private $businessProfile;
+
+    /**
+     * @param BusinessProfile $businessProfile
+     */
+    public function setBusinessProfile( BusinessProfile $businessProfile){
+        $this->businessProfile = $businessProfile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBusinessProfile(){
+        return $this->businessProfile;
+    }
+    /**
+     * @param $booking
+     */
     public function addBooking($booking){
         $this->bookings[] = $booking;
     }
