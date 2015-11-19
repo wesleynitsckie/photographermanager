@@ -42,3 +42,8 @@ mailbox:
     resource: "@WedBundle/Controller/MailboxController.php"
     type:     annotation
     prefix:  /mailbox
+
+businessProfile:
+    resource: "@WedBundle/Controller/BusinessProfileController.php"
+    type:     annotation
+    prefix:  /profile

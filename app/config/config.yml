@@ -139,3 +139,7 @@ nelmio_api_doc:
     name: 'BredieBox - Photographer Manager API documentation'
     cache:
           enabled: false
+oneup_uploader:
+    mappings:
+        gallery:
+            frontend: dropzone

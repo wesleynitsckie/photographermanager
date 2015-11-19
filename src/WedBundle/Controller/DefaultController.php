@@ -30,15 +30,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/businessprofile", name="businessProfile")
+     * @Route("/businessprofile2", name="2businessProfile")
      * @Template()
      */
     public function businessProfileAction(Request $request){
         $user = $this->container->get('security.context')->getToken()->getUser();
         $form = $this->createForm(new BusinessType(), $user);
         $form->handleRequest($request);
-        var_dump($form->isValid());
-        var_dump($form->isSubmitted());
         if ($form->isValid() && $form->isSubmitted()) {
 
             //var_dump('form submitted');die;

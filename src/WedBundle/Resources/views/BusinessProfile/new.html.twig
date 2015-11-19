@@ -1,0 +1,47 @@
+{% extends 'WedBundle::base.html.twig' %}
+
+{% block pageHeading %} Business Profile {% endblock %}
+{% block subheading %}  {% endblock %}
+{% block content %}
+
+
+
+<div class="row">
+
+    {{ form_start(form) }}
+    <div class="col-md-6">
+
+        {{ form_errors(form) }}
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Photography Business Info</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+                <div class="box-body">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.address) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.url) }}
+                    {{ form_row(form.facebookUrl) }}
+                    {{ form_row(form.twitterId) }}
+                    {{ form_row(form.about) }}
+                    {{ form_row(form.packages) }}
+                    {{ form_row(form.file) }}
+                    {{ form_row(form._token) }}
+
+                    <div class="box-footer">
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+        </div>
+        <!-- /.box -->
+
+    </div>
+
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ namespace WedBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 use JMS\Serializer\Annotation\ExclusionPolicy;
@@ -22,6 +22,11 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     *  @ORM\OneToOne(targetEntity="BusinessProfile", mappedBy="user")
+     */
+    private $businessProfile;
 
     /**
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
@@ -89,87 +94,35 @@ class User extends BaseUser
      */
     protected $logo;
 
+    /**
+     * Set the user's business profile
+     * @param BusinessProfile $businessProfile
+     */
+    public function setBusinessProfile(BusinessProfile $businessProfile){
+        $this->businessProfile = $businessProfile;
+    }
+
+    /**
+     * Get the Business Profile
+     * @return mixed
+     */
+    public function getBusinessProfile(){
+        return $this->businessProfile;
+    }
+    /**
+     * Set email
+     * @param $email
+     */
     public function setBusinessEmail($email){
         $this->businessEmail = $email;
     }
 
+    /**
+     * Get the email
+     * @return mixed
+     */
     public function getBusinessEmail(){
         return $this->businessEmail;
-    }
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    public function getAbsolutePath()
-    {
-        return null === $this->logo
-            ? null
-            : $this->getUploadRootDir().'/'.$this->logo;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->logo
-            ? null
-            : $this->getUploadDir().'/'.$this->logo;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        $path = __DIR__.'/../../../../web/'.$this->getUploadDir();
-
-        return $path;
-    }
-
-    protected function getUploadDir()
-    {
-
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/logos';
-    }
-
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the
-        // target filename to move to
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->logo = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
-        $this->file = null;
     }
 
     /**

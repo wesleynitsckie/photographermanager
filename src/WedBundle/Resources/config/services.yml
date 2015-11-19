@@ -11,3 +11,12 @@ services:
         class: "%my_user_provider.class%"
         #this is the place where the properties are passed to the UserProvider - see config.yml
         arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id}]
+
+    portfolio_upload_listener:
+        class: WedBundle\EventListener\PortfolioUploadListener
+        arguments: [@doctrine.orm.entity_manager]
+        tags:
+            - { name: kernel.event_listener, event:  oneup_uploader.post_persist, method: onUpload }
+
+        calls:
+            - [setContainer, [@service_container]]
